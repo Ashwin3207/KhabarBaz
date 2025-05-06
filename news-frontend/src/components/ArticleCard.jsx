@@ -1,30 +1,23 @@
+// src/components/ArticleCard.jsx
 import React from 'react';
 
-const ArticleCard = ({ article }) => {
+const ArticleCard = ({ article, onLike, onBookmark, onClick }) => {
   return (
-    <div className="bg-gray-800 text-white rounded-lg shadow-lg hover:shadow-xl transition-all p-4">
-      {/* Article Image */}
-      <img 
-        src={article.imageUrl} 
-        alt={article.title} 
+    <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg hover:scale-105 transition-transform">
+      <img
+        src={article.urlToImage || 'https://via.placeholder.com/400'}
+        alt={article.title}
         className="w-full h-48 object-cover rounded-md mb-4"
       />
-      
-      {/* Article Title */}
       <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
-      
-      {/* Article Description */}
-      <p className="text-gray-300 text-sm mb-4">{article.description}</p>
-      
-      {/* Read More Link */}
-      <a 
-        href={article.url} 
-        target="_blank" 
-        rel="noreferrer" 
-        className="text-blue-400 hover:underline"
-      >
-        Read more
-      </a>
+      <p className="text-gray-300 mb-4">{article.description || 'No description available.'}</p>
+      <div className="flex gap-4">
+        <button onClick={() => onLike(article)} className="text-green-400 hover:underline">👍 Like</button>
+        <button onClick={() => onBookmark(article)} className="text-yellow-400 hover:underline">📌 Bookmark</button>
+        <a href={article.url} target="_blank" rel="noopener noreferrer" onClick={() => onClick(article)} className="text-blue-400 hover:underline">
+          🔗 Read
+        </a>
+      </div>
     </div>
   );
 };
