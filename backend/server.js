@@ -15,7 +15,8 @@ app.use(express.json()); // Parse JSON bodies
 
 // Routes
 app.use('/api/users', userRoutes);
-app.use('/api/articles', articleRoutes); 
+app.use('/api/articles', articleRoutes);
+app.use('/api/rec', articleRoutes); 
 
 // MongoDB connection
 connectDB();

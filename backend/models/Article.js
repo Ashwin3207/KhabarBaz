@@ -8,6 +8,7 @@ const articleSchema = new mongoose.Schema({
   source: { type: String, required: true },
   publishedAt: { type: Date, required: true },
   content: { type: String, required: true },
+  category: { type: String }, 
 });
 
 const Article = mongoose.model('Article', articleSchema);

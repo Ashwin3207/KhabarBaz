@@ -40,9 +40,9 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
       },
-      timeSpent: {
-        type: Number, // in seconds
-        default: 0,
+      count: {  // The number of times an article has been clicked
+        type: Number,
+        default: 1,
       },
     }
   ],

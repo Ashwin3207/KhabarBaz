@@ -5,7 +5,7 @@ const ArticleCard = ({ article, onLike, onBookmark, onClick }) => {
   return (
     <div className="bg-gray-900 text-white p-4 rounded-lg shadow-lg hover:scale-105 transition-transform">
       <img
-        src={article.urlToImage || 'https://via.placeholder.com/400'}
+        src={article.urlToImage}
         alt={article.title}
         className="w-full h-48 object-cover rounded-md mb-4"
       />

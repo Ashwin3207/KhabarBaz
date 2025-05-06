@@ -13,7 +13,7 @@ export const fetchAndStoreArticles = async (req, res) => {
     
     const response = await axios.get(`https://newsapi.org/v2/everything`, {
       params: {
-        q: query || 'technology',  // Default to 'technology' if no query is provided
+        q: query || 'news',  // Default to 'technology' if no query is provided
         apiKey: NEWS_API_KEY,
       },
     });
@@ -27,7 +27,7 @@ export const fetchAndStoreArticles = async (req, res) => {
             title: article.title,
             description: article.description,
             url: article.url,
-            urlToImage: article.urlToImage || '', // ✅ Add image support with fallback
+            urlToImage: article.urlToImage || 'https://st.depositphotos.com/1011646/1255/i/450/depositphotos_12553000-stock-photo-breaking-news-screen.jpg', // ✅ Add image support with fallback
             source: article.source.name,
             publishedAt: article.publishedAt,
             content: article.content || '',
@@ -63,3 +63,25 @@ export const getStoredArticles = async (req, res) => {
     res.status(500).json({ message: 'Error fetching articles from database', error: error.message });
   }
 };
+
+//Get article by id
+export const getArticleById = async (req, res) => {
+  const { id } = req.params;
+  
+  try {
+    const article = await Article.findById(id);
+    
+    if (!article) {
+      return res.status(404).json({ message: 'Article not found' });
+    }
+    
+    return res.status(200).json(article);
+    
+  } catch (error) {
+    console.error('Error fetching article:', error); // Using console.error for errors is better
+    return res.status(500).json({ 
+      message: 'Error fetching article from database', 
+      error: error.message 
+    });
+  }
+}
