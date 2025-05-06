@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
 const Signup = () => {
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -13,7 +15,7 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('http://localhost:8080/api/users/signup', {
+      const response = await axios.post(`${baseUrl}/api/users/signup`, {
         name,
         email,
         password,
