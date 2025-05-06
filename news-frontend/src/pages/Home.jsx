@@ -3,8 +3,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import ArticleCard from '../components/ArticleCard';
 
-const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-const API_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
+const API_URL = `http://localhost:8080/api/articles/all`;
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
@@ -14,7 +13,8 @@ const Home = () => {
     const fetchArticles = async () => {
       try {
         const response = await axios.get(API_URL);
-        setArticles(response.data.articles);
+        console.log(response.data)
+        setArticles(response.data);
       } catch (error) {
         console.error("Error fetching articles:", error);
       } finally {
