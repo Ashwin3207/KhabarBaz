@@ -37,13 +37,6 @@ coverage/
 *.sublime-workspace
 *.sublime-project
 
-# Python specific
-__pycache__/
-*.py[cod]
-*.pyo
-*.pyd
-*.sqlite3
-
 # Compiled files
 *.class
 *.jar
