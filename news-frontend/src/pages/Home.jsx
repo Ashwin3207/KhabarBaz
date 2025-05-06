@@ -4,7 +4,7 @@ import axios from 'axios';
 import ArticleCard from '../components/ArticleCard';
 
 const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
-const API_URL = `https://newsapi.org/v3/top-headlines?country=us&apiKey=YOUR_NEW_API_KEY`;
+const API_URL = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${API_KEY}`;
 
 const Home = () => {
   const [articles, setArticles] = useState([]);
